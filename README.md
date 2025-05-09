@@ -1,4 +1,4 @@
-# Simple Server for OpenVoice
+# A simple server for `OpenVoice`
 
 This project provides an OpenAI compatible text-to-speech server for the 
 OpenVoice project.
@@ -36,7 +36,7 @@ To run the server, use the docker image you just built:
 docker run --rm -p 18080:8080  --device=nvidia.com/gpu=all openvoice-server:latest
 ```
 
-### Environment Variables
+### Environment variables
 
 - `DATABASE_URL`
   The server stores tone information in a SQLite database, you can control
@@ -51,36 +51,36 @@ Get a list of existing tones
 
 ### POST `/tones`
 
-Create a tone by uploading a wavefile. 
+Create a tone by uploading a `.wav` file. 
 
-- Request Content-Type: multipart/form-data
+- Request `Content-Type: multipart/form-data`
 
 Fields in request:
 - audiofile
 - name
 - desc
   
-- Response Content-Type: application/json
+- Response `Content-Type: application/json`
 
 See `examples/create-tone.sh` for the curl command.
 
 ### GET `/tones/{tone_id}`
 
-Get the details of a tone by tone_id.
+Get the details of a tone by `tone_id`.
 
-- Response Content-Type: application/json
+- Response `Content-Type: application/json`
 
 ### POST `/tones/{tone_id}/{dialect}`
 
-Generate voice using the specified tone and dialect.
+Generate voice using the specified `tone_id` and `dialect`.
 
-- Request Content-Type: application/json
+- Request `Content-Type: application/json`
 
 Fields in request:
 - text
-- speed(optional)
+- speed[optional]
 
-- Response Content-Type: audio/x-wav
+- Response `Content-Type: audio/x-wav`
 
 See `examples/generate_speech.sh` for the curl command
 
@@ -96,7 +96,7 @@ See `examples/generate_speech_openai.sh` for the curl command.
 
 Note:
 
-1. use dialect as model in request, find dialects from the `/cap` endpoint.
-1. use tone_name as voice in request, find tones from the `/tones` endpoint.
+1. use `dialect` as model in request, find dialects from the `/cap` endpoint.
+1. use `tone_name` as voice in request, find tones from the `/tones` endpoint.
 
 
